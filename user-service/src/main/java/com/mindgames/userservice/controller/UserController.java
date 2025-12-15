@@ -1,5 +1,6 @@
 package com.mindgames.userservice.controller;
 
+import com.mindgames.userservice.dto.LoginRequest;
 import com.mindgames.userservice.dto.UserDTO;
 import com.mindgames.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,16 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserDTO> login(@RequestBody LoginRequest loginRequest) {
+        try {
+            UserDTO user = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
         }
     }
 }

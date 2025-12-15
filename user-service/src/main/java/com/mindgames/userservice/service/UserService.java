@@ -67,6 +67,17 @@ public class UserService {
         return userRepository.existsById(id);
     }
 
+    public UserDTO login(String username, String password) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Usuario o contraseña incorrectos"));
+        
+        if (!user.getPassword().equals(password)) {
+            throw new RuntimeException("Usuario o contraseña incorrectos");
+        }
+        
+        return convertToDTO(user);
+    }
+
     private UserDTO convertToDTO(User user) {
         UserDTO dto = new UserDTO();
         dto.setId(user.getId());

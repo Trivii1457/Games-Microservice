@@ -1,6 +1,8 @@
 package com.mindgames.scoreservice.service;
 
+import com.mindgames.scoreservice.dto.GameDTO;
 import com.mindgames.scoreservice.dto.ScoreDTO;
+import com.mindgames.scoreservice.dto.UserDTO;
 import com.mindgames.scoreservice.entity.Score;
 import com.mindgames.scoreservice.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class ScoreService {
     }
 
     public List<ScoreDTO> getAllScores() {
-        return scoreRepository.findAll().stream()
+        return scoreRepository.findAllOrderedByScore().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
@@ -109,6 +111,29 @@ public class ScoreService {
         dto.setScore(score.getScore());
         dto.setDuration(score.getDuration());
         dto.setFecha(score.getFecha());
+        
+        // Fetch username
+        try {
+            String userUrl = userServiceUrl + "/api/users/" + score.getUserId();
+            UserDTO user = restTemplate.getForObject(userUrl, UserDTO.class);
+            if (user != null) {
+                dto.setUsername(user.getUsername());
+            }
+        } catch (Exception e) {
+            dto.setUsername("Unknown");
+        }
+        
+        // Fetch game name
+        try {
+            String gameUrl = gameServiceUrl + "/api/games/" + score.getGameId();
+            GameDTO game = restTemplate.getForObject(gameUrl, GameDTO.class);
+            if (game != null) {
+                dto.setGameName(game.getNombre());
+            }
+        } catch (Exception e) {
+            dto.setGameName("Unknown");
+        }
+        
         return dto;
     }
 

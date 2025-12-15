@@ -14,5 +14,8 @@ public interface ScoreRepository extends JpaRepository<Score, Long> {
 
     @Query("SELECT s FROM Score s WHERE s.gameId = :gameId ORDER BY s.score DESC, s.duration ASC")
     List<Score> findTopScoresByGameId(Long gameId);
+    
+    @Query("SELECT s FROM Score s ORDER BY s.score DESC, s.duration ASC")
+    List<Score> findAllOrderedByScore();
 }
 

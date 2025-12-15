@@ -1,17 +1,11 @@
 package com.mindgames.scoreservice.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "scores")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Score {
 
     @Id
@@ -36,6 +30,65 @@ public class Score {
     @PrePersist
     protected void onCreate() {
         fecha = LocalDateTime.now();
+    }
+
+    // Constructors
+    public Score() {}
+
+    public Score(Long userId, Long gameId, Integer score, Integer duration) {
+        this.userId = userId;
+        this.gameId = gameId;
+        this.score = score;
+        this.duration = duration;
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Long gameId) {
+        this.gameId = gameId;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
 }
 

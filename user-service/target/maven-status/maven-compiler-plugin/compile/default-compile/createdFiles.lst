@@ -1,7 +1,0 @@
-com/mindgames/userservice/dto/UserDTO.class
-com/mindgames/userservice/UserServiceApplication.class
-com/mindgames/userservice/entity/User.class
-com/mindgames/userservice/repository/UserRepository.class
-com/mindgames/userservice/service/UserService.class
-com/mindgames/userservice/controller/UserController.class
-com/mindgames/userservice/dto/LoginRequest.class

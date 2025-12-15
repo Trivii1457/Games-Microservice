@@ -1,6 +1,0 @@
-com\mindgames\gameservice\GameServiceApplication.class
-com\mindgames\gameservice\controller\GameController.class
-com\mindgames\gameservice\dto\GameDTO.class
-com\mindgames\gameservice\entity\Game.class
-com\mindgames\gameservice\repository\GameRepository.class
-com\mindgames\gameservice\service\GameService.class

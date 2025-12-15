@@ -290,3 +290,7 @@ sketch
 
 # React build output
 frontend/build
+
+# Maven target directories
+**/target/
+target/

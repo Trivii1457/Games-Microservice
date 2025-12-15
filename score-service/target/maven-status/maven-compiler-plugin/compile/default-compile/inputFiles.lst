@@ -1,8 +1,0 @@
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/controller/ScoreController.java
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/service/ScoreService.java
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/ScoreServiceApplication.java
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/dto/GameDTO.java
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/dto/UserDTO.java
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/entity/Score.java
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/repository/ScoreRepository.java
-/home/runner/work/Games-Microservice/Games-Microservice/score-service/src/main/java/com/mindgames/scoreservice/dto/ScoreDTO.java

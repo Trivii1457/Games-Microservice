@@ -1,7 +1,0 @@
-/home/runner/work/Games-Microservice/Games-Microservice/user-service/src/main/java/com/mindgames/userservice/repository/UserRepository.java
-/home/runner/work/Games-Microservice/Games-Microservice/user-service/src/main/java/com/mindgames/userservice/service/UserService.java
-/home/runner/work/Games-Microservice/Games-Microservice/user-service/src/main/java/com/mindgames/userservice/entity/User.java
-/home/runner/work/Games-Microservice/Games-Microservice/user-service/src/main/java/com/mindgames/userservice/UserServiceApplication.java
-/home/runner/work/Games-Microservice/Games-Microservice/user-service/src/main/java/com/mindgames/userservice/controller/UserController.java
-/home/runner/work/Games-Microservice/Games-Microservice/user-service/src/main/java/com/mindgames/userservice/dto/LoginRequest.java
-/home/runner/work/Games-Microservice/Games-Microservice/user-service/src/main/java/com/mindgames/userservice/dto/UserDTO.java

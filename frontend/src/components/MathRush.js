@@ -22,6 +22,13 @@ const MathRush = () => {
 
   const currentSettings = difficultySettings[difficulty];
 
+  const handleTimeout = () => {
+    setMessage('⏰ ¡Tiempo agotado!');
+    setTimeout(() => {
+      nextQuestion(false);
+    }, 1000);
+  };
+
   useEffect(() => {
     let timer;
     if (gameState === 'playing' && timeLeft > 0) {
@@ -33,6 +40,7 @@ const MathRush = () => {
       handleTimeout();
     }
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft, gameState, totalTime]);
 
   const generateQuestion = () => {
@@ -85,13 +93,6 @@ const MathRush = () => {
     setMessage('');
     setTimeLeft(currentSettings.timePerQuestion);
     setCurrentQuestion(generateQuestion());
-  };
-
-  const handleTimeout = () => {
-    setMessage('⏰ ¡Tiempo agotado!');
-    setTimeout(() => {
-      nextQuestion(false);
-    }, 1000);
   };
 
   const handleSubmit = (e) => {

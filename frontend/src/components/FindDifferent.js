@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './FindDifferent.css';
 
 const FindDifferent = () => {
@@ -13,9 +13,6 @@ const FindDifferent = () => {
   const [difficulty, setDifficulty] = useState('medio');
   const [message, setMessage] = useState('');
   const [questionsToComplete, setQuestionsToComplete] = useState(10);
-  const [currentType, setCurrentType] = useState('emoji');
-  
-  const timerRef = useRef(null);
 
   // Different types of items to display
   const itemSets = {
@@ -70,14 +67,6 @@ const FindDifferent = () => {
 
   const currentSettings = difficultySettings[difficulty];
 
-  useEffect(() => {
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-    };
-  }, []);
-
   const generateItems = () => {
     const types = currentSettings.types;
     const selectedType = types[Math.floor(Math.random() * types.length)];
@@ -92,7 +81,6 @@ const FindDifferent = () => {
     
     setItems(newItems);
     setDifferentIndex(differentIdx);
-    setCurrentType(selectedType);
     setStartTime(Date.now());
   };
 

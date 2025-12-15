@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './FlashSequence.css';
 
 const FlashSequence = () => {
@@ -14,9 +14,6 @@ const FlashSequence = () => {
   
   const gridSize = 9; // 3x3 grid
   const boxes = Array.from({ length: gridSize }, (_, i) => i);
-  
-  // Emojis for different states
-  const boxEmojis = ['⬜', '🟦', '🟩', '🟨', '🟧', '🟥', '🟪', '🟫', '⬛'];
 
   // Difficulty settings
   const difficultySettings = {

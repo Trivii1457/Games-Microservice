@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+
+      routes:
+        # User Service Routes
+        - id: user-service
+          uri: ${USER_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - RewritePath=/api/users/(?<segment>.*), /api/users/$\{segment}
+
+        # Game Service Routes
+        - id: game-service
+          uri: ${GAME_SERVICE_URL:http://localhost:8082}
+          predicates:
+            - Path=/api/games/**
+          filters:
+            - RewritePath=/api/games/(?<segment>.*), /api/games/$\{segment}
+
+        # Score Service Routes
+        - id: score-service
+          uri: ${SCORE_SERVICE_URL:http://localhost:8083}
+          predicates:
+            - Path=/api/scores/**
+          filters:
+            - RewritePath=/api/scores/(?<segment>.*), /api/scores/$\{segment}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: DEBUG
+

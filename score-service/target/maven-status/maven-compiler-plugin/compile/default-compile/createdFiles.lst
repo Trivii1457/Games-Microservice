@@ -1,6 +1,8 @@
-com\mindgames\scoreservice\repository\ScoreRepository.class
-com\mindgames\scoreservice\controller\ScoreController.class
-com\mindgames\scoreservice\ScoreServiceApplication.class
-com\mindgames\scoreservice\entity\Score.class
-com\mindgames\scoreservice\dto\ScoreDTO.class
-com\mindgames\scoreservice\service\ScoreService.class
+com/mindgames/scoreservice/dto/GameDTO.class
+com/mindgames/scoreservice/entity/Score.class
+com/mindgames/scoreservice/dto/UserDTO.class
+com/mindgames/scoreservice/repository/ScoreRepository.class
+com/mindgames/scoreservice/service/ScoreService.class
+com/mindgames/scoreservice/dto/ScoreDTO.class
+com/mindgames/scoreservice/ScoreServiceApplication.class
+com/mindgames/scoreservice/controller/ScoreController.class

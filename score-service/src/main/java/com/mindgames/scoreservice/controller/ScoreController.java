@@ -32,12 +32,6 @@ public class ScoreController {
         List<ScoreDTO> scores = scoreService.getAllScores();
         return new ResponseEntity<>(scores, HttpStatus.OK);
     }
-    
-    @GetMapping("/global")
-    public ResponseEntity<List<ScoreDTO>> getGlobalScores() {
-        List<ScoreDTO> scores = scoreService.getAllScores();
-        return new ResponseEntity<>(scores, HttpStatus.OK);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<ScoreDTO> getScoreById(@PathVariable Long id) {

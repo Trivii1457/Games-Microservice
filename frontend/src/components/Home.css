@@ -25,10 +25,28 @@
 
 .hero-description {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   font-size: 1.1rem;
   color: #555;
   line-height: 1.6;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
 }
 
 .features {

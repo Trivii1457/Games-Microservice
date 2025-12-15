@@ -6,6 +6,7 @@ export const userService = {
   createUser: (user) => api.post('/api/users', user),
   updateUser: (id, user) => api.put(`/api/users/${id}`, user),
   deleteUser: (id) => api.delete(`/api/users/${id}`),
+  login: (credentials) => api.post('/api/users/login', credentials),
 };
 
 export const gameService = {

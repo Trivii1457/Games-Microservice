@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { scoreService } from '../services/dataService';
 import './FindDifferent.css';
 
 const FindDifferent = () => {
@@ -129,8 +130,23 @@ const FindDifferent = () => {
     generateItems();
   };
 
-  const finishGame = () => {
+  const finishGame = async () => {
     setGameState('finished');
+
+    // Save score to backend
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user && user.id) {
+        await scoreService.createScore({
+          userId: user.id,
+          gameId: 4, // Find Different
+          score: score,
+          duration: totalTime
+        });
+      }
+    } catch (error) {
+      console.error('Error saving score:', error);
+    }
   };
 
   const restartGame = () => {

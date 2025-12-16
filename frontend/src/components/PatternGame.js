@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { scoreService } from '../services/dataService';
 import './PatternGame.css';
 
 const PatternGame = () => {
@@ -143,11 +144,26 @@ const PatternGame = () => {
     setCurrentPattern(generatePattern());
   };
 
-  const finishGame = () => {
+  const finishGame = async () => {
     // Puntaje = (aciertos × 20) – errores × 5
     const finalScore = Math.max(0, (correctAnswers * 20) - (errors * 5));
     setScore(finalScore);
     setGameState('finished');
+
+    // Save score to backend
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user && user.id) {
+        await scoreService.createScore({
+          userId: user.id,
+          gameId: 3, // Pattern Game
+          score: finalScore,
+          duration: 0
+        });
+      }
+    } catch (error) {
+      console.error('Error saving score:', error);
+    }
   };
 
   const restartGame = () => {

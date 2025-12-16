@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { scoreService } from '../services/dataService';
 import './MathRush.css';
 
 const MathRush = () => {
@@ -126,11 +127,26 @@ const MathRush = () => {
     setCurrentQuestion(generateQuestion());
   };
 
-  const finishGame = () => {
+  const finishGame = async () => {
     // Puntaje = respuestas_correctas × 15 – (tiempo_en_segundos × 2)
     const finalScore = Math.max(0, (correctAnswers * 15) - (totalTime * 2));
     setScore(finalScore);
     setGameState('finished');
+    
+    // Save score to backend
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user && user.id) {
+        await scoreService.createScore({
+          userId: user.id,
+          gameId: 1, // Math Rush game ID (should be created in database)
+          score: finalScore,
+          duration: totalTime
+        });
+      }
+    } catch (error) {
+      console.error('Error saving score:', error);
+    }
   };
 
   const restartGame = () => {

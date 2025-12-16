@@ -9,6 +9,8 @@ public class ScoreDTO {
     private Integer score;
     private Integer duration;
     private LocalDateTime fecha;
+    private String username;
+    private String gameName;
 
     // Constructors
     public ScoreDTO() {}
@@ -69,6 +71,22 @@ public class ScoreDTO {
 
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getGameName() {
+        return gameName;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
     }
 }
 

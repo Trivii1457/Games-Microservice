@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { scoreService } from '../services/dataService';
 import './FlashSequence.css';
 
 const FlashSequence = () => {
@@ -70,6 +71,22 @@ const FlashSequence = () => {
     setMessage('¡Tu turno! Repite la secuencia 🎯');
   };
 
+  const saveScore = async (finalScore) => {
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user && user.id) {
+        await scoreService.createScore({
+          userId: user.id,
+          gameId: 2, // Flash Sequence
+          score: finalScore,
+          duration: 0
+        });
+      }
+    } catch (error) {
+      console.error('Error saving score:', error);
+    }
+  };
+
   const handleBoxClick = (index) => {
     if (gameState !== 'userTurn' || showingSequence) return;
     
@@ -83,9 +100,10 @@ const FlashSequence = () => {
     // Check if the click is correct
     const currentStep = newUserSequence.length - 1;
     if (newUserSequence[currentStep] !== sequence[currentStep]) {
-      // Wrong answer
+      // Wrong answer - save score and end game
       setGameState('failure');
       setMessage('❌ ¡Incorrecto! Juego terminado');
+      saveScore(score);
       return;
     }
     
